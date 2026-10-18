@@ -1,1 +1,22 @@
+type: "machine"
+id: "machine-yamaha-cx5"
+name: "CX-5"
+aliases:
+  - "Yamaha CX-5"
+  - "ヤマハ CX-5"
+  - "MUSIC COMPUTER CX5"
+attributes:
+  manufacturer: "ヤマハ (YAMAHA)"
+  release_year: 1984
+  standard: "MSX1"
+  cpu: "Zilog Z80A (3.579 MHz)"
+  ram_kb: 32
+  vram_kb: 16
+sources:
+  - "src-msxwiki-cx5"
+metadata:
+  schema_version: 1
+  created_at: "2026-10-18"
+  updated_at: null
+  review_status: "candidate"
 

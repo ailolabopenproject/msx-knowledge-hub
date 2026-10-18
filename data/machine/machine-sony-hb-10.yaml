@@ -63,4 +63,25 @@ metadata:
   created_at: "2026-10-18"
   updated_at: null
   review_status: "approved"
+  
+type: "machine"
+id: "machine-sony-hb-10"
+name: "HB-10"
+aliases:
+  - "Sony HB-10"
+  - "ソニー HB-10"
+attributes:
+  manufacturer: "ソニー (SONY)"
+  release_year: 1984
+  standard: "MSX1"
+  cpu: "Zilog Z80A (3.579 MHz)"
+  ram_kb: 64
+  vram_kb: 16
+sources:
+  - "src-msxwiki-hb10"
+metadata:
+  schema_version: 1
+  created_at: "2026-10-18"
+  updated_at: null
+  review_status: "approved"
 

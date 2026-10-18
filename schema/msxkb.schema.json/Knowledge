@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/msxkb.schema.json",
+  "title": "MSX Knowledge Base",
+  "oneOf": [
+    { "$ref": "#/$defs/machine" },
+    { "$ref": "#/$defs/part" },
+    { "$ref": "#/$defs/source" },
+    { "$ref": "#/$defs/relation" }
+  ],
+
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+
+    "metadata": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "created_at",
+        "review_status"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+
+        "created_at": {
+          "type": "string",
+          "format": "date"
+        },
+
+        "updated_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+
+        "review_status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "candidate",
+            "approved",
+            "rejected"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "machine": {
+      "type": "object",
+
+      "required": [
+        "type",
+        "id",
+        "name",
+        "metadata"
+      ],
+
+      "properties": {
+        "type": {
+          "const": "machine"
+        },
+
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+
+        "attributes": {
+          "type": "object"
+        },
+
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        }
+      },
+
+      "additionalProperties": false,
+      "unevaluatedProperties": false
+    },
+
+    "part": {
+      "type": "object",
+
+      "required": [
+        "type",
+        "id",
+        "name",
+        "metadata"
+      ],
+
+      "properties": {
+        "type": {
+          "const": "part"
+        },
+
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+
+        "attributes": {
+          "type": "object"
+        },
+
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        }
+      },
+
+      "additionalProperties": false,
+      "unevaluatedProperties": false
+    },
+
+    "source": {
+      "type": "object",
+
+      "required": [
+        "type",
+        "id",
+        "name",
+        "source_type",
+        "metadata"
+      ],
+
+      "properties": {
+        "type": {
+          "const": "source"
+        },
+
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+
+        "name": {
+          "type": "string"
+        },
+
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "service_manual",
+            "datasheet",
+            "magazine",
+            "book",
+            "website",
+            "archive",
+            "blog"
+          ]
+        },
+
+        "publisher": {
+          "type": "string"
+        },
+
+        "year": {
+          "type": "integer"
+        },
+
+        "month": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "location": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "reliability": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        }
+      },
+
+      "additionalProperties": false,
+      "unevaluatedProperties": false
+    },
+
+    "relation": {
+      "type": "object",
+
+      "required": [
+        "type",
+        "id",
+        "relation_type",
+        "from",
+        "to",
+        "metadata"
+      ],
+
+      "properties": {
+        "type": {
+          "const": "relation"
+        },
+
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+
+        "relation_type": {
+          "type": "string",
+          "enum": [
+            "uses",
+            "manufactured_by",
+            "compatible_with",
+            "published_by",
+            "contains",
+            "mentions",
+            "successor_of"
+          ]
+        },
+
+        "from": {
+          "$ref": "#/$defs/id"
+        },
+
+        "to": {
+          "$ref": "#/$defs/id"
+        },
+
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+
+        "metadata": {
+          "$ref": "#/$defs/metadata"
+        }
+      },
+
+      "additionalProperties": false,
+      "unevaluatedProperties": false
+    }
+  }
+}

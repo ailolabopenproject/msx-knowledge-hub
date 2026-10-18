@@ -1,1 +1,66 @@
+type: "source"
+id: "src-msxwiki-hb10"
+name: "MSX Wiki: Sony HB-10"
+source_type: "website"
+publisher: "MSX Wiki"
+year: 2024
+url: "https://www.msx.org/wiki/Sony_HB-10"
+reliability: 90
+metadata:
+  schema_version: 1
+  created_at: "2026-10-18"
+  updated_at: null
+  review_status: "approved"
+
+type: "part"
+id: "part-tms9918a"
+name: "TMS9918A"
+aliases:
+  - "TI TMS9918A"
+  - "VDP"
+attributes:
+  category: "VDP"
+  manufacturer: "Texas Instruments"
+sources:
+  - "src-msxwiki-hb10"
+metadata:
+  schema_version: 1
+  created_at: "2026-10-18"
+  updated_at: null
+  review_status: "approved"
+
+type: "machine"
+id: "machine-sony-hb-10"
+name: "HB-10"
+aliases:
+  - "Sony HB-10"
+  - "ソニー HB-10"
+attributes:
+  manufacturer: "ソニー (SONY)"
+  release_year: 1984
+  standard: "MSX1"
+  cpu: "Zilog Z80A (3.579 MHz)"
+  ram_kb: 64
+  vram_kb: 16
+sources:
+  - "src-msxwiki-hb10"
+metadata:
+  schema_version: 1
+  created_at: "2026-10-18"
+  updated_at: null
+  review_status: "approved"
+
+type: "relation"
+id: "rel-hb10-uses-tms9918a"
+relation_type: "uses"
+from: "machine-sony-hb-10"
+to: "part-tms9918a"
+confidence: 100
+sources:
+  - "src-msxwiki-hb10"
+metadata:
+  schema_version: 1
+  created_at: "2026-10-18"
+  updated_at: null
+  review_status: "approved"
 
